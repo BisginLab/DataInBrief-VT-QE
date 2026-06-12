@@ -44,57 +44,64 @@ This repository contains the processing scripts used to generate the enriched An
 | `dump_malicious_counts.py` | Export malicious counts |
 | `utility.py` | Common helper functions |
 
-## Pipeline Order
-
-To reproduce the full dataset from scratch, run scripts in this order:
-
-### Phase 1: VirusTotal Collection
 
 ## Pipeline Order
 
 To reproduce the full dataset from scratch, run scripts in this order:
 
 ### Phase 1: VirusTotal Collection
+
 python 01_virustotal/submit_to_virustotal.py
+
 python 01_virustotal/parse_api.py
+
 python 01_virustotal/create_vt_extensive_dataset.py
 
 ### Phase 2: Quark-Engine Collection
 python 02_quark_engine/quark_files.py
+
 python 02_quark_engine/qk_rescan.py
+
 python 02_quark_engine/create_qk_extensive_dataset.py
 
 ### Phase 3: Merge and Validate
 python 03_merge_and_validate/create_paper_summary_dataset.py
+
 python 03_merge_and_validate/create_validated_dataset.py
 
 ### Phase 4: Generate Analysis (optional)
 python 04_analysis/compute_summary_stats.py
+
 python 04_analysis/visualize.py
+
 python 04_analysis/comparative_study.py
 
-Key Output Files
-Script									Output File
-create_vt_extensive_dataset.py			vt_lightweight.csv
-create_qk_extensive_dataset.py			qk_extensive_features.csv
-create_paper_summary_dataset.py			paper_summary_dataset.csv
-create_validated_dataset.py				val_dataset_t1.csv ... t5.csv
 
-Requirements
+## Key Output Files
+
+| Script | Output |
+|--------|--------|
+| `create_vt_extensive_dataset.py` | `vt_lightweight.csv` |
+| `create_qk_extensive_dataset.py` | `qk_extensive_features.csv` |
+| `create_paper_summary_dataset.py` | `paper_summary_dataset.csv` |
+| `create_validated_dataset.py` | `val_dataset_t1.csv` ... `t5.csv` |
+
+## Requirements
 pip install pandas numpy scikit-learn matplotlib seaborn requests vt-py tqdm
+
 Or use the provided requirements.txt.
 
-##Test Scripts
-The following scripts are for testing/debugging and are not required for dataset reproduction:
-*_test.py (all)
-debug_*.py
-ai.py / *_ai.py
-async_vt_teest.py
+## Test Scripts (Not required for reproduction)
+The following scripts are for testing/debugging:
+- All `*_test.py` files
+- `debug_*.py`
+- `ai.py` / `*_ai.py`
+- `async_vt_teest.py`
 
-Citation
-If you use these scripts or the generated dataset, please cite:
-Mohsen, F., Zhang, Y., Gultekin, A.M., Bisgin, H., Buchta, K. (2026). Validated and Enriched Android Application Dataset: 
-Integration of VirusTotal and Quark-Engine Intelligence. Data in Brief. DOI: 10.34894/XV84Z8
+## Citation
 
-License
+Mohsen, F., Zhang, Y., Gultekin, A.M., Bisgin, H., Buchta, K. (2026). Validated and Enriched Android Application Dataset: Integration of VirusTotal and Quark-Engine Intelligence. *Data in Brief*. DOI: 10.34894/XV84Z8
+
+## License
+
 CC BY 4.0
