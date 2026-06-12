@@ -5,31 +5,50 @@ This repository contains the processing scripts used to generate the enriched An
 **"Validated and Enriched Android Application Dataset: Integration of VirusTotal and Quark-Engine Intelligence"** (Data in Brief, 2026)
 
 ## Repository Structure
-scripts/
-├── 01_virustotal/
-│ ├── submit_to_virustotal.py # Submit APK hashes to VirusTotal API
-│ ├── parse_api.py # Parse raw VT JSON responses
-│ └── create_vt_extensive_dataset.py # Generate vt_lightweight.csv
-├── 02_quark_engine/
-│ ├── quark_files.py # Run Quark-Engine on APK files
-│ ├── qk_rescan.py # Rescan timed-out APKs (10-min timeout)
-│ └── create_qk_extensive_dataset.py # Generate qk_extensive_features.csv
-├── 03_merge_and_validate/
-│ ├── create_paper_summary_dataset.py # Merge VT + QE into summary dataset
-│ ├── create_validated_dataset.py # Generate k=1..5 validated subsets
-│ └── create_balanced_dataset.py # Create balanced subsets (optional)
-├── 04_analysis/
-│ ├── visualize.py # Generate all figures (1-6)
-│ ├── compute_summary_stats.py # Generate Table 5 (descriptive stats)
-│ ├── comparative_study.py # Cross-source agreement (Cohen's κ)
-│ ├── trend_analyze.py # Temporal trend analysis (Figure 3)
-│ └── malicious_distribution.py # Malicious count distribution (Figure 2)
-└── utils/
-├── calculate_hash.py # Compute MD5 hashes
-├── dump_pkg2hash_dict.py # Create pkgname → MD5 mapping
-├── dump_malicious_counts.py # Export malicious counts
-└── utility.py # Common helper functions
 
+### 01_virustotal/
+| Script | Purpose |
+|--------|---------|
+| `submit_to_virustotal.py` | Submit APK hashes to VirusTotal API |
+| `parse_api.py` | Parse raw VT JSON responses |
+| `create_vt_extensive_dataset.py` | Generate `vt_lightweight.csv` |
+
+### 02_quark_engine/
+| Script | Purpose |
+|--------|---------|
+| `quark_files.py` | Run Quark-Engine on APK files |
+| `qk_rescan.py` | Rescan timed-out APKs (10-min timeout) |
+| `create_qk_extensive_dataset.py` | Generate `qk_extensive_features.csv` |
+
+### 03_merge_and_validate/
+| Script | Purpose |
+|--------|---------|
+| `create_paper_summary_dataset.py` | Merge VT + QE into summary dataset |
+| `create_validated_dataset.py` | Generate k=1..5 validated subsets |
+| `create_balanced_dataset.py` | Create balanced subsets (optional) |
+
+### 04_analysis/
+| Script | Purpose |
+|--------|---------|
+| `visualize.py` | Generate all figures (1-6) |
+| `compute_summary_stats.py` | Generate Table 5 (descriptive stats) |
+| `comparative_study.py` | Cross-source agreement (Cohen's κ) |
+| `trend_analyze.py` | Temporal trend analysis (Figure 3) |
+| `malicious_distribution.py` | Malicious count distribution (Figure 2) |
+
+### utils/
+| Script | Purpose |
+|--------|---------|
+| `calculate_hash.py` | Compute MD5 hashes |
+| `dump_pkg2hash_dict.py` | Create pkgname → MD5 mapping |
+| `dump_malicious_counts.py` | Export malicious counts |
+| `utility.py` | Common helper functions |
+
+## Pipeline Order
+
+To reproduce the full dataset from scratch, run scripts in this order:
+
+### Phase 1: VirusTotal Collection
 
 ## Pipeline Order
 
