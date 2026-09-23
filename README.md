@@ -26,6 +26,9 @@ This repository contains the processing scripts used to generate the enriched An
 | `create_paper_summary_dataset.py` | Merge VT + QE into summary dataset |
 | `create_validated_dataset.py` | Generate k=1..5 validated subsets |
 | `create_balanced_dataset.py` | Create balanced subsets (optional) |
+| `SplitData_Test_Validation.py` | Split paper_summary_dataset.csv into testing and training before applying validation strategies|
+| `generate_validation_datasets.py` | Generate 13 validated datasets using 5 strategies |
+
 
 ### 04_analysis/
 | Script | Purpose |
